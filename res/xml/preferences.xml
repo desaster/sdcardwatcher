@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference 
+        android:key="display_notification"
+        android:summary="This helps keep the service alive"
+        android:title="Display notification" 
+        android:defaultValue="false"
+        />
+    <CheckBoxPreference 
+        android:key="display_toast"
+        android:summary="Display a toast message when files are added/removed"
+        android:title="Display toast messages" 
+        android:defaultValue="true"
+        />
+    <!--
+    <PreferenceCategory 
+        android:title="First Category"
+        android:key="first_category">
+        <CheckBoxPreference 
+            android:key="display_notification"
+            android:summary="This helps keeping the service alive"
+            android:title="Display notification" 
+            android:defaultValue="true"
+            />
+    </PreferenceCategory>
+    -->
+</PreferenceScreen>

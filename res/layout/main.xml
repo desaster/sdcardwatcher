@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView  
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"
+            android:text="SDCard Watcher"
+            android:gravity="left"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:padding="20dp" />
+        <ImageButton
+            android:id="@+id/settingsbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dip"
+            android:layout_gravity="right"
+            android:padding="20dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/settings" />
+    </LinearLayout>
+    <!--
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonStart"
+        android:text="Start" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:id="@+id/buttonStop" />
+    -->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+    <ListView
+        android:id="@+id/basedirlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp">
+    </ListView>
+    <ImageButton
+        android:id="@+id/newbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dip"
+        android:layout_gravity="right"
+        android:padding="20dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/newitem" />
+</LinearLayout>
