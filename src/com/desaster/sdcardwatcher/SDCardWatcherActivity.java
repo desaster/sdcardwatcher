@@ -38,8 +38,11 @@ public class SDCardWatcherActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        //Thread.setDefaultUncaughtExceptionHandler(
-        //    new CustomExceptionHandler("/mnt/sdcard/boblor/"));
+        /* handy way to debug, but not needed for release */
+        /*
+        Thread.setDefaultUncaughtExceptionHandler(
+            new CustomExceptionHandler("/mnt/sdcard/boblor/"));
+        */
         super.onCreate(savedInstanceState);
 
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);

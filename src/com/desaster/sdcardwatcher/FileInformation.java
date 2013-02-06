@@ -9,13 +9,13 @@ public class FileInformation
     private String mBasedir;
     private String mApp;
 
-    private int type;
+    private int mType;
 
     public FileInformation(String basedir, String filename)
     {
         mFilename = filename;
         mBasedir = basedir;
-        type = TYPE_FILE;
+        mType = TYPE_FILE;
         mApp = "";
     }
 
@@ -37,5 +37,15 @@ public class FileInformation
     public void setApp(String app)
     {
         mApp = app;
+    }
+
+    public int getType()
+    {
+        return mType;
+    }
+
+    public void setType(int type)
+    {
+        mType = type;
     }
 }

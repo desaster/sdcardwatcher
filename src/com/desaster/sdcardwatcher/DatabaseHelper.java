@@ -56,6 +56,7 @@ public class DatabaseHelper extends SQLiteOpenHelper
         while (c.moveToNext()) {
             entries.add(c.getString(0));
         }
+        db.close();
         return entries;
     }
 
@@ -69,9 +70,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
             new String[]{basedir},
             null, null, null);
         MyLog.d("getBasedirID() getCount(): [%d]", c.getCount());
-        if (c.getCount() < 1) return 0;
+        if (c.getCount() < 1) {
+            db.close();
+            return 0;
+        }
         c.moveToFirst();
-        return c.getInt(0);
+        int retval = c.getInt(0);
+        c.close();
+        return retval;
     }
 
     public void deleteFile(String basedir, String path)
@@ -159,9 +165,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
             new String[]{Integer.toString(basedir), filename},
             null, null, null);
         MyLog.d("getApp() getCount(): [%d]", c.getCount());
-        if (c.getCount() < 1) return null;
+        if (c.getCount() < 1) {
+            db.close();
+            return null;
+        }
         c.moveToFirst();
-        return c.getString(0);
+        String retval = c.getString(0);
+        db.close();
+        return retval;
     }
 
     public String getLastUpdate(int basedir)
@@ -177,9 +188,14 @@ public class DatabaseHelper extends SQLiteOpenHelper
             new String[]{Integer.toString(basedir)},
             null, null, "timestamp DESC", "1");
         MyLog.d("getLastUpdate() getCount(): [%d]", c.getCount());
-        if (c.getCount() < 1) return null;
+        if (c.getCount() < 1) {
+            db.close();
+            return null;
+        }
         c.moveToFirst();
-        return c.getString(0);
+        String retval = c.getString(0);
+        db.close();
+        return retval;
     }
 
     public String getLastUpdate(String basedir)

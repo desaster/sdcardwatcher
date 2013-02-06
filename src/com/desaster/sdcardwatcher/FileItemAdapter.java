@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.view.LayoutInflater;
 import android.content.Context;
 import android.widget.TextView;
+import android.widget.ImageView;
 import android.graphics.Color;
 import java.util.*;
 
@@ -36,6 +37,13 @@ public class FileItemAdapter extends ArrayAdapter<FileInformation>
         if (file != null) {
             TextView fileView = (TextView) v.findViewById(R.id.filename);
             TextView infoView = (TextView) v.findViewById(R.id.app);
+            ImageView iconView = (ImageView) v.findViewById(R.id.fileicon);
+
+            if (file.getType() == FileInformation.TYPE_FOLDER) {
+                iconView.setImageResource(R.drawable.ic_folder);
+            } else {
+                iconView.setImageResource(R.drawable.ic_file);
+            }
 
             fileView.setText(file.getFilename());
             String app = file.getApp();

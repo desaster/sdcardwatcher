@@ -44,11 +44,34 @@ public class FileListActivity extends Activity
                 basedir);
             return;
         }
-        for (File file : dir.listFiles()) {
+
+        File[] files = dir.listFiles();
+        Arrays.sort(files, new Comparator<File>() {
+            @Override
+            public int compare(File entry1, File entry2) {
+                String s1 = entry1.getName().toLowerCase();
+                String s2 = entry2.getName().toLowerCase();
+                if (s1.length() > 1 && s1.charAt(0) == '.') {
+                    s1 = s1.substring(1);
+                }
+                if (s2.length() > 1 && s2.charAt(0) == '.') {
+                    s2 = s2.substring(1);
+                }
+                return s1.compareTo(s2);
+            }
+        });
+        for (File file : files) {
             MyLog.d("File: [%s][%s]", file.getName(), file.getAbsolutePath());
 
             FileInformation info =
                 new FileInformation(basedir, file.getName());
+
+            if (file.isDirectory()) {
+                info.setType(FileInformation.TYPE_FOLDER);
+            } else {
+                info.setType(FileInformation.TYPE_FILE);
+            }
+
             String app = mDB.getApp(mDB.getBasedirID(basedir), file.getName());
             if (app != null) {
                 info.setApp(app);
