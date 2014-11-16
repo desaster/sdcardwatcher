@@ -34,7 +34,8 @@ public class FileListActivity extends Activity
 
         File dir;
         try {
-            dir = new File(basedir);
+            // maybe a symlink, so resolve with getCanonicalFile
+            dir = new File(basedir).getCanonicalFile();
         } catch (Exception e) {
             MyLog.d("Error opening basedir: %s", e.toString());
             return;
